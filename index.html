@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Untuk Cewekku ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;overflow:hidden}
+.page{display:none;width:100%;max-width:450px}
+.page.active{display:block;animation:masuk .6s ease}
+.page.keluar{animation:keluar .35s ease forwards}
+@keyframes masuk{from{opacity:0;transform:translateY(30px) scale(.92) rotate(-1deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes keluar{to{opacity:0;transform:translateX(-40px) scale(.95)}}
+.card{background:rgba(255,255,255,.95);padding:30px 24px;border-radius:28px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.2);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#ff2e63,#ff9a9e,#ffb6c1)}
+h1{font-size:30px;margin:10px 0;line-height:1.2}.pink{color:#ff2e63}
+p{color:#555;line-height:1.7;font-size:15px;margin-bottom:16px}
+button{position:relative;overflow:hidden;background:linear-gradient(45deg,#ff2e63,#ff6b8a);color:#fff;border:none;padding:14px 26px;border-radius:50px;font-weight:700;cursor:pointer;margin:5px;box-shadow:0 8px 20px rgba(255,46,99,.35);transition:.2s}
+button:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 25px rgba(255,46,99,.5)}
+button:active{transform:scale(.92)}
+button::after{content:"";position:absolute;width:100px;height:100px;background:rgba(255,255,255,.4);border-radius:50%;transform:scale(0);opacity:0;pointer-events:none}
+button:active::after{animation:ripple .5s ease}
+@keyframes ripple{0%{transform:scale(0);opacity:1}100%{transform:scale(2.5);opacity:0}}
+.btn-bounce{animation:bounce 1.5s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.box{background:#fff0f3;padding:14px;border-radius:14px;margin:8px 0;text-align:left;animation:masuk .5s ease;transition:.2s}
+.box:hover{transform:translateX(6px);background:#ffe0e8}
+#btnNo{background:#ddd!important;color:#666!important;box-shadow:none;transition:.15s}
+.gif{width:140px;border-radius:16px;margin:10px 0}
+#jawab{color:#ff2e63;font-weight:700;margin-top:12px;min-height:24px;font-size:17px}
+#ketik{text-align:left;min-height:130px}
+.heart{position:fixed;top:-20px;animation:jatuh linear infinite;pointer-events:none;z-index:1}
+@keyframes jatuh{to{transform:translateY(110vh) rotate(360deg)}}
+.love{font-size:50px;animation:degup 1s infinite}
+@keyframes degup{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+
+<div id="p1" class="page active"><div class="card">
+<div class="love">❤️</div>
+<p style="color:#ff2e63;font-weight:700;letter-spacing:2px;font-size:12px">HAI CANTIKKU</p>
+<h1>Untuk <span class="pink">Sayangku</span> ❤️</h1>
+<p>Dari cowokmu yang paling sayang sama kamu. Aku bikin ini khusus buat kamu, jangan di-skip ya.</p>
+<button class="btn-bounce" onclick="pindah('p2')">Buka Surat Dari Aku 💌</button>
+<p style="font-size:12px;color:#999;margin-top:12px">- Dari Cowokmu -</p>
+</div></div>
+
+<div id="p2" class="page"><div class="card">
+<h1 class="pink">Surat Dari Cowokmu</h1>
+<p id="ketik"></p>
+<button onclick="pindah('p1')">⬅ Kembali</button>
+<button onclick="pindah('p3')">Lanjut ➜</button>
+</div></div>
+
+<div id="p3" class="page"><div class="card">
+<h1 class="pink">Kenapa Aku Sayang Banget Sama Kamu?</h1>
+<div class="box">😊 Senyum kamu tuh candu, bikin aku semangat tiap hari</div>
+<div class="box">🥰 Kamu selalu sabar ngadepin aku yang kadang nyebelin</div>
+<div class="box">😍 Kamu cantiknya gak ada obat, apalagi pas lagi ngambek</div>
+<div class="box">❤️ Di deket kamu, aku ngerasa paling nyaman</div>
+<button onclick="pindah('p2')">⬅ Kembali</button>
+<button onclick="pindah('p4')">Terakhir, Penting! ➜</button>
+</div></div>
+
+<div id="p4" class="page"><div class="card">
+<h1>Sayang, Mau Temenin Aku Terus Gak? 🥺</h1>
+<img class="gif" src="https://media.tenor.com/8U5u8l2y1uAAAAAC/cute-bear.gif">
+<br>
+<button id="btnYes" onclick="mau()">MAU! ❤️</button>
+<button id="btnNo" onmouseover="kabur()" onclick="kabur()">Gak Mau</button>
+<p id="jawab"></p>
+<button onclick="pindah('p1')" style="background:transparent;color:#999;box-shadow:none;font-size:12px">Ulang dari awal</button>
+</div></div>
+
+<script>
+let teks="Sayangku...\n\nMakasih ya udah mau jadi pacar aku. Sejak ada kamu, hidup aku jadi lebih berwarna.\n\nAku janji, aku bakal jagain kamu, bikin kamu ketawa terus, dan gak bakal ninggalin kamu.\n\n- Cowokmu yang sayang banget sama kamu -";
+let i=0,udah=false;
+function pindah(id){
+let aktif=document.querySelector('.page.active');
+aktif.classList.add('keluar');
+setTimeout(()=>{
+aktif.classList.remove('active','keluar');
+document.getElementById(id).classList.add('active');
+if(id=='p2'&&!udah){udah=true;ketik()}
+},350);
+}
+function ketik(){
+if(i<teks.length){document.getElementById('ketik').innerHTML+=teks[i]=='\n'?'<br>':teks[i];i++;setTimeout(ketik,25)}
+}
+function mau(){
+document.getElementById('jawab').innerHTML="YEEEY! Makasih sayang ❤️<br>Cowokmu janji bakal sayang kamu terus!";
+document.getElementById('btnYes').style.transform="scale(1.2)";
+for(let k=0;k<50;k++){setTimeout(hati,k*70)}
+if(navigator.vibrate) navigator.vibrate([200,100,200]);
+}
+let kecil=1;
+function kabur(){
+let b=document.getElementById('btnNo');
+kecil-=0.15; if(kecil<0.4) kecil=0.4;
+b.style.transform=`translate(${Math.random()*160-80}px,${Math.random()*80-40}px) scale(${kecil})`;
+b.innerText=["Gak Mau","Yakin?","Coba lagi","Gak bisa!","Pencet MAU aja"][Math.floor(Math.random()*5)];
+}
+function hati(){
+let h=document.createElement('div');h.className='heart';h.innerHTML=['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];h.style.left=Math.random()*100+'vw';h.style.animationDuration=(Math.random()*2+3)+'s';h.style.fontSize=(Math.random()*15+18)+'px';document.getElementById('hearts').appendChild(h);setTimeout(()=>h.remove(),5000)
+}
+setInterval(hati,800)
+</script>
+</body>
+</html>
